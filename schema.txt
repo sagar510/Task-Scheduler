@@ -1,0 +1,25 @@
+CREATE TABLE graph (
+    graph_id serial PRIMARY KEY,
+    lifespan double precision
+);
+
+CREATE TABLE execution (
+    exe_id serial PRIMARY KEY,
+    count INT,
+    graph_id INT REFERENCES graph(graph_id)
+);
+
+CREATE TABLE edges (
+    id serial PRIMARY KEY,
+    from_node INT,
+    to_node INT,
+   graph_id INT REFERENCES graph(graph_id)
+);
+
+
+CREATE TABLE nodelifespan (
+    id serial PRIMARY KEY,
+    data INT,
+    lifespan double precision,
+    graph_id INT REFERENCES graph(graph_id)
+);
